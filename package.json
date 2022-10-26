@@ -35,7 +35,7 @@
     "rxjs": "^7.5.6",
     "tarot-api-types": "^0.0.4",
     "tarot-card-deck": "^1.2.3",
-    "tarot-game-engine": "^0.0.9",
+    "tarot-game-engine": "^0.0.10",
     "ts-node": "^10.6.0",
     "uuid": "^8.3.2",
     "ws": "^8.5.0"
