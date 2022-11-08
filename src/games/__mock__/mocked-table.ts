@@ -6,4 +6,6 @@ export class MockedTable extends Table {
     announce = jest.fn();
     setAside = jest.fn();
     play = jest.fn();
+    announcePoignee = jest.fn();
+    declinePoignee = jest.fn();
 }

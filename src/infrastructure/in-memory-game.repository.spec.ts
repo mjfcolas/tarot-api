@@ -1,19 +1,9 @@
 import {InMemoryGameRepository} from "./in-memory-game.repository";
 import {TarotPlayerImpl} from "../games/player";
 import {skip} from "rxjs";
-import {TarotGameApi} from "../games/tarot-game-api";
 import {TarotPlayerAtTable} from "../games/table";
 import {PlayerIdentifier} from "tarot-game-engine";
-
-class MockedTarotGameApi implements TarotGameApi {
-
-    constructor(public readonly endGame) {
-    }
-
-    announce = jest.fn();
-    play = jest.fn();
-    setAside = jest.fn()
-}
+import {MockedTarotGameApi} from "../games/__mock__/mocked-tarot-game";
 
 class MockedTarotPlayerAtTable implements TarotPlayerAtTable {
 

@@ -9,6 +9,10 @@ export type TarotGameProvider = (
 export interface TarotGameApi {
     announce(playerThatAnnounce: TarotPlayer, announce?: Announce): void;
 
+    announcePoignee(playerThatAnnounce: TarotPlayer, shownCards: PlayingCard[]): void
+
+    declinePoignee(playerThatAnnounce: TarotPlayer): void
+
     setAside(playerThatSetAside: TarotPlayer, cardsSetAside: PlayingCard[]): void;
 
     play(playerThatPlay: TarotPlayer, card: PlayingCard): void;

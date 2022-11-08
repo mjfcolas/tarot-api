@@ -28,6 +28,18 @@ describe(`Mapper`, () => {
         })
     });
 
+    test(`Given a play api player action with no announce,
+        when converting to player action,
+        then return expected player action`, () => {
+        expect(apiPlayerActionToPlayerAction({
+            action: "PLAY",
+            card: "T1"
+        })).toEqual({
+            action: "PLAY",
+            card: "T1"
+        })
+    });
+
     test(`Given an array of tables with one table on which one player has joined,
         when converting to all table views,
         then return expected result`, () => {

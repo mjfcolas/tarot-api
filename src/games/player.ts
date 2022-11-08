@@ -18,6 +18,11 @@ export type PlayerAction = {
 } | {
     action: "PLAY",
     card: PlayingCardIdentifier
+} | {
+    action: "ANNOUNCE_POIGNEE",
+    cards: PlayingCardIdentifier[]
+} | {
+    action: "DECLINE_POIGNEE",
 }
 
 type PlayerInternalNotification = {
@@ -73,6 +78,16 @@ export class TarotPlayerImpl implements TarotPlayerAtTable {
                     .getDeck()
                     .find(currentPlayingCard => currentPlayingCard.identifier === action.card)
                 this.performGameAction(() => this.table.play(this, playingCard))
+                break;
+            case "ANNOUNCE_POIGNEE":
+                const playingCards: PlayingCard[] = action.cards
+                    .map(currentId => this.table
+                        .getDeck()
+                        .find(currentPlayingCard => currentPlayingCard.identifier === currentId))
+                this.performGameAction(() => this.table.announcePoignee(this, playingCards))
+                break;
+            case "DECLINE_POIGNEE":
+                this.performGameAction(() => this.table.declinePoignee(this))
                 break;
         }
     }

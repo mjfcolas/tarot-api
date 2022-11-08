@@ -19,5 +19,5 @@ const tableToView: (table: Table) => TableView = (table: Table) => ({
 
 export const apiPlayerActionToPlayerAction: (apiPlayerAction: ApiPlayerAction) => PlayerAction = (apiPlayerAction: ApiPlayerAction) => ({
     ...apiPlayerAction,
-    announce: apiPlayerAction.action === "ANNOUNCE" ? Announce[apiPlayerAction.announce] : null
+    announce: apiPlayerAction.action === "ANNOUNCE" ? Announce[apiPlayerAction.announce] : undefined
 })

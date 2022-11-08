@@ -12,9 +12,9 @@ import {
     CONNECT_ENDPOINT,
     WATCH_TABLE_ENDPOINT
 } from "tarot-api-types";
+import {GameRepository} from "../games/game.repository";
 import {apiPlayerActionToPlayerAction, tableArrayToView} from "./mappers";
 import {InMemoryGameRepository} from "../infrastructure/in-memory-game.repository";
-import {GameRepository} from "../games/game.repository";
 import {provideTarotGame} from "../infrastructure/tarot-game-provider";
 
 const gameRepository: GameRepository = new InMemoryGameRepository(provideTarotGame)
