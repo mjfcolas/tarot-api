@@ -8,4 +8,6 @@ export class MockedTarotGameApi implements TarotGameApi {
     announce = jest.fn();
     play = jest.fn();
     setAside = jest.fn()
+    announcePoignee = jest.fn()
+    declinePoignee = jest.fn()
 }

@@ -111,6 +111,22 @@ describe(`Table`, () => {
         expect(players[0].notify).toHaveBeenCalledWith({type: "GAME_NOT_STARTED"})
     });
 
+    test(`Given a table which is not full,
+        when player tries to announce poignee,
+        then game not started notification is sent to player`, () => {
+        table.join(players[0]);
+        table.announcePoignee(players[0], []);
+        expect(players[0].notify).toHaveBeenCalledWith({type: "GAME_NOT_STARTED"})
+    });
+
+    test(`Given a table which is not full,
+        when player tries to decline poignee,
+        then game not started notification is sent to player`, () => {
+        table.join(players[0]);
+        table.declinePoignee(players[0]);
+        expect(players[0].notify).toHaveBeenCalledWith({type: "GAME_NOT_STARTED"})
+    });
+
     test(`Given a game that has began,
         when player tries to set aside,
         then action is sent to game`, () => {
@@ -133,6 +149,22 @@ describe(`Table`, () => {
         joinFourPlayers();
         table.announce(players[0], Announce.GARDE);
         expect(mockedTarotGame.announce).toHaveBeenCalledWith(players[0], Announce.GARDE)
+    });
+
+    test(`Given a game that has began,
+        when player tries to announce poignee,
+        then action is sent to game`, () => {
+        joinFourPlayers();
+        table.announcePoignee(players[0], []);
+        expect(mockedTarotGame.announcePoignee).toHaveBeenCalledWith(players[0], [])
+    });
+
+    test(`Given a game that has began,
+        when player tries to decline poignee,
+        then action is sent to game`, () => {
+        joinFourPlayers();
+        table.declinePoignee(players[0]);
+        expect(mockedTarotGame.declinePoignee).toHaveBeenCalledWith(players[0])
     });
 
     test(`Given a game that has began and an observation on end of game,

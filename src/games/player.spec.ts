@@ -2,7 +2,7 @@ import {TarotPlayerImpl} from "./player";
 import {MockedGameRepository} from "./__mock__/mocked-game.repository";
 import {MockedTable} from "./__mock__/mocked-table";
 import {Announce} from "tarot-game-engine";
-import {DECK_78, DIAMOND_K} from "tarot-card-deck";
+import {DECK_78, DIAMOND_K, TRUMP_1} from "tarot-card-deck";
 
 describe(`Player`, function () {
 
@@ -209,5 +209,50 @@ describe(`Player`, function () {
         })
 
         expect(mockedTable.play).toHaveBeenCalledWith(player, DIAMOND_K)
+    });
+
+    test(`Given a game repository and a player that has joined a table,
+        when player announce a poignee,
+        then poignee is announced`, () => {
+        mockedGameRepository.join.mockImplementation(() => {
+            mockedTable.join(player)
+            return mockedTable;
+        })
+
+        mockedTable.getDeck.mockReturnValue(DECK_78)
+
+        player.performAction({
+            action: "JOIN_TABLE",
+            tableId: tableId
+        })
+
+        player.performAction({
+            action: "ANNOUNCE_POIGNEE",
+            cards: ["T1"]
+        })
+
+        expect(mockedTable.announcePoignee).toHaveBeenCalledWith(player, [TRUMP_1])
+    });
+
+    test(`Given a game repository and a player that has joined a table,
+        when player decline a poignee,
+        then poignee is declined`, () => {
+        mockedGameRepository.join.mockImplementation(() => {
+            mockedTable.join(player)
+            return mockedTable;
+        })
+
+        mockedTable.getDeck.mockReturnValue(DECK_78)
+
+        player.performAction({
+            action: "JOIN_TABLE",
+            tableId: tableId
+        })
+
+        player.performAction({
+            action: "DECLINE_POIGNEE"
+        })
+
+        expect(mockedTable.declinePoignee).toHaveBeenCalledWith(player)
     });
 });

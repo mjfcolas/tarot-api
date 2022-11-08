@@ -97,6 +97,18 @@ export class Table {
             () => this.tarotGame.announce(playerThatAnnounce, announce));
     }
 
+    public announcePoignee(player: TarotPlayerAtTable, shownCards: PlayingCard[]) {
+        this.performActionIfGameStarted(
+            player,
+            () => this.tarotGame.announcePoignee(player, shownCards));
+    }
+
+    public declinePoignee(player: TarotPlayerAtTable) {
+        this.performActionIfGameStarted(
+            player,
+            () => this.tarotGame.declinePoignee(player));
+    }
+
     public setAside(playerThatSetAside: TarotPlayerAtTable, cardsSetAside: PlayingCard[]) {
         this.performActionIfGameStarted(
             playerThatSetAside,

@@ -10,7 +10,7 @@ const config = [
             file: 'dist/server.js',
             format: 'cjs'
         },
-        plugins: [commonjs(), json(), typescript(), nodeResolve()]
+        plugins: [commonjs(), json(), typescript({ module: "es2015" }), nodeResolve()]
     }
 ]
 
